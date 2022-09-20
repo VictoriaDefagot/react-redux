@@ -1,15 +1,17 @@
 import './App.css';
-import { useSelector } from 'react-redux';
+import TasksForm from './components/tasksForm';
+import TasksList from './components/tasksList';
 
 function App() {
 
-  const tasksState = useSelector(state => state.tasks);
-  console.log(tasksState);
-
   return (
+
     <div className="App">
       <h1>Hello World!</h1>
+      <TasksForm />
+      <TasksList />
     </div>
+
   );
 }
 
