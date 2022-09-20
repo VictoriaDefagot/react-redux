@@ -13,24 +13,33 @@ function TasksList() {
     };
 
     return(
-        <>
+        <div className='w-4/6'>
 
-        <header>
-            <h3> Total tasks: {tasks.length}</h3>
-            <Link to='/create-task'>
-                Create new task
-            </Link>
-        </header>
+            <header className='flex justify-between items-center py-4'>
+                <h3> Tasks: {tasks.length}</h3>
+                <Link to='/create-task' className='bg-indigo-600 px-2 py-1 rounded-sm text-sm'>
+                    Create new task
+                </Link>
+            </header>
 
-        {tasks.map(task => (
-            <div key={task.id}>
-                <h3>{task.title}</h3>
-                <p>{task.description}</p>
-                <button onClick={() => handlerDelete(task.id)}>Delete</button>
-                <Link to={`/edit-task/${task.id}`}>Edit</Link>
+            <div className='grid grid-cols-3 gap-4'>
+                {tasks.map(task => (
+                    <div key={task.id} className='bg-neutral-800 p-4 rounded-md'>
+                        <header className='flex justify-between'>
+                            <h3>{task.title}</h3>
+                            <div className='flex gap-x-2'>
+                                <Link to={`/edit-task/${task.id}`}
+                                className='bg-zinc-600 px-2 py-1 text-xs rounded-md'>Edit</Link>
+                                <button onClick={() => handlerDelete(task.id)} 
+                                className='bg-red-500 px-2 py-1 text-xs rounded-md'>Delete</button>
+                            </div>
+                        </header>
+                        <p>{task.description}</p>
+                    </div>
+                ))}
             </div>
-        ))}
-        </>
+
+        </div>
     )
 };
 

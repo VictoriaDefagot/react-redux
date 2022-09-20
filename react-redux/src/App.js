@@ -7,17 +7,17 @@ function App() {
 
   return (
 
-    <div className="App">
+    <div className="bg-zinc-900 h-screen text-white">
 
-      <h1>Tasks Planner</h1>
-
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<TasksList />}></Route>
-          <Route path='/create-task' element={<TasksForm />}></Route>
-          <Route path='/edit-task/:id' element={<TasksForm />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <div className='flex items-center justify-center h-full'>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<TasksList />}></Route>
+            <Route path='/create-task' element={<TasksForm />}></Route>
+            <Route path='/edit-task/:id' element={<TasksForm />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
 
     </div>
 
