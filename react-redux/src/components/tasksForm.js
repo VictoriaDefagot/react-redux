@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../features/tasks/taskSlice';
 import { v4 as uuid } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 function TasksForm() {
 
@@ -18,6 +19,7 @@ function TasksForm() {
     }
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handlerSubmit = e => {
         e.preventDefault();
@@ -25,6 +27,7 @@ function TasksForm() {
             ...task,
             id: uuid(),
         }));
+        navigate('/');
     };
 
     return(
