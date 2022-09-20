@@ -13,7 +13,6 @@ const initialState = [
         completed: false
     }];
 
-
 export const taskSlice = createSlice({
     name: 'tasks',
     initialState,
@@ -22,15 +21,23 @@ export const taskSlice = createSlice({
             state.push(action.payload);
             //[...state, action.payload];
         },
-        deleteTask: (state, action) => {
-            const taskFound = state.find(task => task.id === action.payload);
-            if(taskFound) {
-                state.splice(state.indexOf(taskFound), 1);
+        editTask: (state, action) => {
+            const { id, title, description } = action.payload;
+            const taskEdited = state.find(task => task.id === id);
+            if(taskEdited) {
+                taskEdited.title = title;
+                taskEdited.description = description;
             };
-        }
+        },
+        deleteTask: (state, action) => {
+            const taskDeleted = state.find(task => task.id === action.payload);
+            if(taskDeleted) {
+                state.splice(state.indexOf(taskDeleted), 1);
+            };
+        },
     }
 });
 
 
-export const { addTask, deleteTask } = taskSlice.actions;
+export const { addTask, deleteTask, editTask } = taskSlice.actions;
 export default taskSlice.reducer;
